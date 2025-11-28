@@ -1,0 +1,7 @@
+/fonts/CruyffSansCondensed_tff/*.ttf
+  Content-Type: font/ttf
+  Cache-Control: public, max-age=31536000
+
+/fonts/onest_ttf/*.ttf
+  Content-Type: font/ttf
+  Cache-Control: public, max-age=31536000

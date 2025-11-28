@@ -1,0 +1,484 @@
+@use "../../common_scss/common";
+@use "../../common_scss/fonts";
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+
+  &.active {
+    display: flex;
+  }
+}
+
+.modal-content {
+  background-color: common.$app-ground-color;
+  color: rgb(255, 255, 255);
+  padding: 1.3rem;
+  border-radius: 1rem;
+  max-width: 500px;
+  min-width: 320px;
+  width: 90%;
+  position: relative;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  box-sizing: border-box;
+
+  @media (max-height: 750px) {
+    width: 70%;
+    margin: 1rem;
+  }
+
+  @media screen and (width: 540px) and (height: 720px) {
+    width: 50%;
+  }
+
+  h2 {
+    margin-top: 0;
+    background-color: inherit;
+    margin-bottom: 0.5rem;
+    align-self: flex-start;
+  }
+
+  p {
+    background-color: inherit;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.8rem;
+    background-color: transparent;
+    color: white;
+    border: none;
+    cursor: pointer;
+
+    img {
+      height: 20px;
+    }
+  }
+
+  .back-btn {
+    @extend .close-btn;
+    left: 2rem;
+    width: 20px;
+  }
+}
+
+.sketch-picker-div {
+  display: flex;
+  justify-content: center;
+  background-color: inherit;
+
+  .Chome-picker {
+    background-color: inherit;
+    border-radius: 15px;
+  }
+}
+
+.flexbox-fix {
+  display: none;
+}
+
+.multiple-cards-div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  box-sizing: border-box;
+  width: 100%;
+  overflow: hidden;
+  flex-wrap: wrap;
+  height: 50vh;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  .wrapped-card {
+    min-width: 0;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    img {
+      padding: 10px;
+      height: 9rem;
+      box-sizing: border-box;
+      object-fit: cover;
+      background-color: #212124;
+      border-radius: 15px;
+
+      @media (max-width: 570px) {
+        height: 8rem;
+      }
+    }
+  }
+}
+
+.upload-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+
+  img {
+    height: 16px;
+  }
+}
+
+.multiple-cards-div-2 {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  box-sizing: border-box;
+  width: 100%;
+  overflow: hidden;
+  height: 50vh;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  .wrapped-cardObj-card {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+
+    p {
+      margin-left: 1rem;
+    }
+
+    .wrapped-cardObj-card-p {
+      word-wrap: break-word;
+      overflow: auto;
+    }
+
+    .wrapped-cardObj-card-img {
+      height: 3rem;
+    }
+  }
+
+  .wrapped-cardObj-sm {
+    height: 8rem;
+    box-sizing: border-box;
+    position: relative;
+
+    .wrapped-cardObj-sm-card-img {
+      width: 180px;
+      height: 180px;
+      z-index: 7;
+      object-fit: contain;
+      min-width: 8rem;
+    }
+
+    .wrapped-cardObj-sm-player-img {
+      z-index: 8;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      object-fit: contain;
+      pointer-events: none;
+      margin: 0 auto;
+      top: 0;
+      left: 0;
+    }
+
+    .ovr-position-container-sm {
+      @extend .common-card-txt-css;
+      top: 10%;
+      left: 22.5%;
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .ovr-text-in-card-sm {
+        // font-size: clamp(3rem, 4vw, 2.5rem);
+        margin: 0;
+        padding: 0;
+        height: 12px;
+        @extend .cruyff-font;
+        font-size: small;
+      }
+
+      .position-text-in-card-sm {
+        // font-size: clamp(1.5rem, 3.5vw, 1.2rem);
+        @extend .cruyff-font;
+        font-size: x-small;
+      }
+    }
+
+    .player-name-in-card-sm {
+      @extend .common-card-txt-css;
+      @extend .cruyff-font;
+      text-align: center;
+      width: 100%;
+      bottom: 30%;
+      font-size: x-small;
+    }
+
+    .flag-main-container-sm {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      position: absolute;
+      bottom: 12%;
+      width: 100%;
+      background-color: transparent;
+      margin: 5px 0;
+    }
+
+    .flag-common-css-sm {
+      z-index: 9;
+      height: 1rem;
+      background-color: inherit;
+    }
+  }
+}
+
+.modal-feature-box {
+  @extend .feature-box;
+  text-align: left;
+  justify-content: flex-start;
+
+  button {
+    border: none;
+    cursor: pointer;
+    color: inherit;
+    background-color: transparent;
+    text-align: start;
+  }
+}
+
+.color-picker-save-button {
+  background-color: #3fb28f;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  width: 47%;
+  align-self: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+// Created This for search modal to avoid conflict with other modals
+//grid layout for cards in search modal
+.search-multiple-cards-div-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  //flex-direction: row;
+  //gap: 1rem;
+  row-gap: 0.7rem;
+  column-gap: 0;
+  box-sizing: border-box;
+  width: 100%;
+  overflow: hidden;
+  //flex-wrap: wrap;
+  height: 50vh;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  justify-items: center;
+  align-content: start;
+
+
+  .search-wrapped-cardObj-card {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    cursor: pointer;
+
+
+    p {
+      margin-left: 1rem;
+    }
+
+    .search-wrapped-cardObj-card-p {
+      word-wrap: break-word;
+      overflow: auto;
+    }
+
+    .search-wrapped-cardObj-card-img {
+      height: 3rem;
+    }
+  }
+
+  // 11.25 rem = 180px height for card in search modal
+  .search-wrapped-cardObj-sm {
+    background-color: #212124;
+    border-radius: 15px;
+
+    height: 11.25rem;
+    box-sizing: border-box;
+    position: relative;
+
+    .search-wrapped-cardObj-sm-card-img {
+
+      width: 100%;
+      height: 100%;
+      z-index: 7;
+      object-fit: contain;
+      min-width: 8rem;
+      position: relative;
+      display: block;
+    }
+
+    .search-wrapped-cardObj-sm-player-img {
+      z-index: 8;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      object-fit: contain;
+      pointer-events: none;
+      margin: 0 auto;
+      top: 0;
+      left: 0;
+    }
+
+    .search-ovr-position-container-sm {
+      @extend .common-card-txt-css;
+      top: 9.5%;
+      left: 22%;
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .search-ovr-text-in-card-sm {
+        // font-size: clamp(3rem, 4vw, 2.5rem);
+        margin: 0;
+        padding: 0;
+        height: 24px;
+        @extend .cruyff-font;
+        font-size: 23px;
+      }
+
+      .search-position-text-in-card-sm {
+        // font-size: clamp(1.5rem, 3.5vw, 1.2rem);
+        @extend .cruyff-font;
+        font-size: 15px;
+        margin-left: -1px;
+
+      }
+    }
+
+    .search-player-name-in-card-sm {
+      @extend .common-card-txt-css;
+      @extend .cruyff-font;
+      right: 0%; // to center align
+      width: 100%;
+      bottom: 25.5%;
+      font-size: 15px;
+      position: absolute;
+    }
+
+    .search-flag-main-container-sm {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10%;
+      position: absolute;
+      bottom: 13.5%;
+      width: 100%;
+      background-color: transparent;
+      margin: 5px 0;
+    }
+
+    .search-flag-common-css-sm {
+      z-index: 9;
+      height: 18px;
+      width: 18px;
+      background-color: inherit;
+    }
+  }
+}
+
+@media(max-width: 600px) {
+  .search-multiple-cards-div-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* Main wrapper for the whole modal grid */
+.player-images-modal-wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 180px);
+  /* 2 per row */
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+  height: 55vh;
+  overflow-y: auto;
+
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.player-images-modal-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+/* Each grid item (outer div) */
+.player-image-item {
+  width: 180px;
+  height: 180px;
+}
+
+/* Box wrapper around the img */
+.player-image-box {
+  width: 180px;
+  height: 180px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+  border-radius: 15px;
+  background: #212124;
+  /* OPTIONAL dark background */
+  overflow: hidden;
+}
+
+/* The actual 180×180 image */
+.player-image-img {
+  width: 180px;
+  height: 180px;
+  object-fit: contain;
+  /* Prevent distortion */
+  border-radius: 10px;
+}
+
+@media (max-width: 600px) {
+  .player-images-modal-wrapper {
+    grid-template-columns: repeat(1, 180px);
+    /* 1 per row */
+    justify-content: center;
+    /* center the image */
+  }
+}

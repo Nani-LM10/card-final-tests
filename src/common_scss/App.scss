@@ -1,0 +1,7 @@
+@use "./common";
+
+body,
+html {
+    background-color: common.$app-ground-color;
+    color: common.$text-color-heading;
+}

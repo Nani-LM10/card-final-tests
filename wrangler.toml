@@ -1,0 +1,4 @@
+name = "card-creator"
+compatibility_date = "2025-11-27"
+assets = { directory = "./dist" }
+account_id = "86829b58e42fc70f00f3be5f4c900ecb"

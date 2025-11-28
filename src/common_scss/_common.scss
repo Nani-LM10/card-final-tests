@@ -1,0 +1,186 @@
+@use "./fonts";
+
+// global remove css
+* {
+  @extend .onest-font;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+// ## application css ##
+
+// ## background color
+
+$app-ground-color: #151515;
+
+$component-back-ground-color: #212124;
+
+$btn-hover-bg-color: #3d3d3f;
+
+// ## Text color
+
+$text-color-heading: #ffffff;
+
+// card border radius
+
+$card-border-radus: 10px;
+
+// btn common height
+$fld-common-hight-1: 3.5rem;
+
+// btn common color
+$fld-common-color-1: #ffffff;
+$fld-common-color-2: #fff6;
+
+.field-container-common {
+  background-color: $component-back-ground-color;
+  color: $fld-common-color-1;
+  height: $fld-common-hight-1;
+  border-radius: $card-border-radus;
+  padding: 0.5rem 1rem;
+}
+
+// btn common css
+.main-btn {
+  @extend .field-container-common;
+  border: none;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.main-btn:hover {
+  background-color: $btn-hover-bg-color;
+}
+
+.main-btn:active {
+  border-color: #ffffff26;
+}
+
+.common-img-css {
+  position: absolute;
+  background-color: transparent;
+  pointer-events: none;
+  object-fit: contain;
+}
+
+.common-card-txt-css {
+  z-index: 10;
+  position: absolute;
+  // text-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+  background-color: transparent;
+  font-weight: bolder;
+  text-transform: uppercase;
+  white-space: pre;
+}
+
+.button-div {
+  box-sizing: border-box;
+  display: flex;
+  gap: 0.75rem;
+  flex: 1;
+
+  .btn-100 {
+    @extend .main-btn;
+    width: 100%;
+
+    @media (max-width: 64rem) {
+      flex: 1;
+    }
+
+    .flagu {
+      max-width: 100%;
+      max-height: 20px;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto;
+    }
+  }
+
+  .btn-65 {
+    @extend .main-btn;
+    width: 65%;
+
+    @media (max-width: 64rem) {
+      flex: 1;
+    }
+  }
+
+  .btn-35 {
+    @extend .main-btn;
+    height: auto;
+    width: 65%;
+    font-weight: 600;
+    padding: 0;
+    font-size: small;
+    font-weight: 500;
+    color: #ffffff;
+
+    @media (max-width: 64rem) {
+      flex: 1;
+    }
+  }
+}
+
+.zoom-btn {
+  height: auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  button {
+    bottom: unset;
+    background: none;
+    border: none;
+    color: inherit;
+    padding: 0;
+    font: inherit;
+    box-shadow: none;
+    font-size: large;
+    cursor: pointer;
+
+    @media (max-width: 64rem) {
+      font-size: x-large;
+    }
+  }
+}
+
+.button-div-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+  box-sizing: border-box;
+  width: 100%;
+  overflow: hidden;
+  flex-wrap: wrap;
+
+  .wrapped-btn {
+    flex: 1 1 200px;
+    min-width: 0;
+    box-sizing: content-box;
+    @extend .main-btn;
+  }
+}
+
+.feature-box {
+  @extend .field-container-common;
+  flex: 1;
+  position: relative;
+  box-sizing: border-box;
+
+  flex: 1 1 30%;
+  min-width: 200px;
+
+  input {
+    all: unset;
+    box-sizing: border-box;
+  }
+}

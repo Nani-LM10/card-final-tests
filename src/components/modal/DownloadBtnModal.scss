@@ -1,0 +1,288 @@
+@use "../../common_scss/common";
+@use "../../common_scss/fonts";
+
+.card-type-selection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  flex-direction: row; // Always horizontal for side-by-side cards
+
+  // Default gap if logoCount is not specified
+  gap: 1rem;
+  
+
+  // Dynamic gap based on logo count
+  &.logo-count-2 {
+    gap: 1.5rem; // more space between cards for 2-logo cards
+  }
+
+  &.logo-count-3 {
+    gap: 1rem; // standard space for 3-logo cards
+  }
+
+  .card-type-option {
+    width: 8rem;
+    position: relative;
+    flex-shrink: 0; // Prevent cards from shrinking
+
+    .Card-type-select {
+      @extend .cruyff-font;
+      height: 11rem;
+      padding: 0.2rem 0.2rem 0.4rem 0.2rem;
+      border: 1px solid #3d3d3f;
+      border-radius: 1rem;
+      cursor: pointer;
+      text-align: center;
+      transition: background-color 0.2s;
+      box-sizing: border-box;
+      background-color: common.$app-ground-color;
+      position: relative;
+
+      &:hover {
+        opacity: 0.8;
+      }
+
+      &::after {
+        content: "PNG";
+        display: block;
+        text-align: center;
+        color: #ffffff;
+        font-size: 0.575rem;
+        font-weight: 400;
+        position: absolute;
+        bottom: 0.5rem;
+        left: 0;
+        right: 0;
+        @extend .onest-font;
+      }
+      
+
+      .card-player-img-container {
+        box-sizing: border-box;
+        position: relative;
+        font-weight: 100;
+
+        .card-comp {
+          z-index: 7;
+          border-radius: inherit;
+          width: 120px;
+          height: 120px;
+          margin-top: 15px;
+        }
+
+        .player-comp-img {
+          z-index: 8;
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          object-fit: contain;
+          pointer-events: none;
+          margin: 0 auto;
+          margin-left: 20px;
+        }
+
+        
+
+          
+        
+
+        .ovr-position-container {
+          @extend .common-card-txt-css;
+          top: 19%;
+          left: 21.5%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 0.22rem;
+
+          .ovr-text-in-card {
+            font-size: 1rem;
+            margin: 0;
+            padding: 0;
+            height: 13.5px;
+            @extend .cruyff-font;
+          }
+
+          .position-text-in-card {
+            font-size: 0.7rem;
+            margin-left: -0.15rem;
+            @extend .cruyff-font;
+          }
+        }
+
+        .player-name-in-card {
+          @extend .common-card-txt-css;
+          @extend .cruyff-font;
+          text-align: center;
+          bottom: 24.48%;
+          width: 100%;
+          font-size: 0.625rem;
+        }
+
+        .flag-main-container-sm-scr {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          position: absolute;
+          bottom: 18%;
+          width: 100%;
+          background-color: transparent;
+
+          &.logo-count-2 {
+            gap: 15%; // spacing for 2 logos
+          }
+
+          &.logo-count-3 {
+            gap: 10.45%; // spacing for 3 logos
+          }
+        }
+
+        .flag-common-css-sm-scr {
+          z-index: 9;
+          height: 0.75rem;
+          scale: 95%;
+          width: 0.75rem;
+          background-color: inherit;
+        }
+
+        .rank-img-sm {
+          z-index: 9;
+          position: absolute;
+          height: 14.3%;
+          bottom: 4.465%;
+          right: 41.68%;
+        }
+
+        .trainingLevel-in-card-sm {
+          @extend .common-card-txt-css;
+          @extend .cruyff-font;
+          bottom: 7.9%;
+          width: 100%;
+          font-size: 0.5rem;
+          text-align: center;
+          font-weight: 550;
+          color: white;
+        }
+      }
+    }
+
+    // Second card gets different label
+    &:nth-child(2) .Card-type-select::after {
+      content: "Animated GIF";
+    }
+  }
+}
+
+// ------------------------------------------
+// SELECTED STATE
+// ------------------------------------------
+.card-type-option {
+  transition: border-color 0.2s;
+}
+
+.card-type-option.selected {
+  .Card-type-select {
+    border-color: #3fb28f;
+
+    // Change label color to green when selected
+    &::after {
+      color: #3fb28f;
+    }
+  }
+}
+
+// Unselected state - white text (default is already white from above)
+.card-type-option:not(.selected) {
+  .Card-type-select::after {
+    color: #a4a2a2;
+  }
+}
+
+
+// =====================================================================================
+// 🔄 NEW: Direct Download Buttons Styling
+// This replaces the preview selection UI with two side-by-side download buttons
+// =====================================================================================
+
+.download-buttons-container {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 1rem;
+
+  // Individual button styling - inherits from .download-btn but customized for modal
+  .download-btn {
+    flex: 1; // Each button takes equal width
+    min-width: 0; // Allows buttons to shrink if needed
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    // 🔄 FIXED: Explicitly set background and border to prevent blue background on some devices
+    border: none;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    // Disabled state when processing
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    // Hover effect (only when not disabled)
+    &:not(:disabled):hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    // Active state
+    &:not(:disabled):active {
+      transform: translateY(0);
+    }
+  }
+
+  // Left button (PNG)
+  .download-btn-png {
+    background-color: #3fb28f !important; // 🔄 FIXED: Green color with !important to override any browser defaults
+    color: white !important; // 🔄 FIXED: White text with !important to prevent color issues
+  }
+
+  // Right button (GIF)
+  .download-btn-gif {
+    background-color: #3fb28f !important; // 🔄 FIXED: Same green color with !important to override any browser defaults
+    color: white !important; // 🔄 FIXED: White text with !important to prevent color issues
+    &:disabled:not(:hover) {
+      background-color: #5a5a5a !important; // Gray background when disabled
+      color: #9a9a9a !important; // Gray text when disabled
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+}
+
+// =====================================================================================
+// 🔄 CHANGED: Keep buttons side-by-side on all screen sizes including mobile
+// Removed vertical stacking - buttons always stay horizontal
+// =====================================================================================
+@media (max-width: 400px) {
+  .download-buttons-container {
+    // 🔄 CHANGED: Keep flex-direction: row to maintain side-by-side layout on mobile
+    flex-direction: row; // Always side-by-side, even on very small screens
+    gap: 0.5rem; // Smaller gap on mobile to fit both buttons
+
+    .download-btn {
+      flex: 1; // Equal width for both buttons
+      min-width: 0; // Allow buttons to shrink if needed
+      padding: 0.5rem 0.75rem; // Slightly smaller padding on mobile
+      font-size: 0.875rem; // Slightly smaller font on mobile for better fit
+    }
+  }
+}
+

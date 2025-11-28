@@ -1,0 +1,42 @@
+@font-face {
+    font-family: 'CruyffFont';
+    src: url('../../public/fonts/CruyffSansCondensed_tff/Cruyff-Sans-Condensed.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'OnestFont';
+    src: url('../../public/fonts/onest_ttf/OnestRegular1602-hint.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'CruyffMedium';
+    src: url('../../public/fonts/CruyffSansMedium_tff/CruyffSans-Medium.tff') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'CruyffCondensedMedium';
+    src: url('../../public/fonts/CruyffSansCondensed-Medium.tff/CruyffSansCondensed-Medium') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+.onest-font {
+    font-family: 'OnestFont', sans-serif;
+}
+
+.cruyff-font {
+    font-family: 'CruyffFont', sans-serif;
+}
+
+.cruyff-font-medium {
+    font-family: 'CruyffMedium', sans-serif;
+}
+
+.cruyff-condensed-font-medium {
+    font-family: 'CruyffCondensedMedium', sans-serif;
+}
