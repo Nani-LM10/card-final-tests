@@ -337,7 +337,7 @@
 
     .search-wrapped-cardObj-sm-card-img {
 
-      width: 100%;
+      //width: 100%;
       height: 100%;
       z-index: 7;
       object-fit: contain;
@@ -361,7 +361,7 @@
     .search-ovr-position-container-sm {
       @extend .common-card-txt-css;
       top: 9.5%;
-      left: 22%;
+      left: 20.5%;
       position: absolute;
       display: flex;
       flex-direction: column;
